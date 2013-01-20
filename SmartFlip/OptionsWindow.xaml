@@ -655,7 +655,7 @@
 
 	<Grid x:Name="LayoutRoot">
 		<Border BorderBrush="#FF555555" BorderThickness="1.5,1.5,1.5,1.5" CornerRadius="8,8,0,0" Background="#99000000">
-			<Image Opacity="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="678.5" Height="166.5" TextElement.Foreground="#D8000000" Margin="0,0,0,0" Source="title2.png" Stretch="Fill" StretchDirection="Both"/>
+			<Image Opacity="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="678.5" Height="166.5" TextElement.Foreground="#D8000000" Margin="0,0,0,0" Source="Resources/OptionsBackground.png" Stretch="Fill" StretchDirection="Both"/>
 		</Border>
 		<Grid Margin="8,60,8,40" x:Name="OptionsHost">
 			<ListBox Style="{DynamicResource SimpleListBox}" Width="180" Background="#FF424141" BorderBrush="{DynamicResource ControlBorderColor}" FontSize="14" FontWeight="Normal" Foreground="{DynamicResource FontColor}" IsSynchronizedWithCurrentItem="True" d:LayoutOverrides="Margin" HorizontalAlignment="Left" Margin="-1,-0.058,0,0" x:Name="CategoryList" SelectionChanged="CategoryChanged">
@@ -966,7 +966,7 @@
 				</Path>
 			</Grid>
 		</Grid>
-		<Image Width="280" Height="38.058" Source="sm_title.png" HorizontalAlignment="Left" Margin="13,17,0,0" VerticalAlignment="Top"/>
+		<Image Width="280" Height="38.058" Source="Resources/OptionsTitle.png" HorizontalAlignment="Left" Margin="13,17,0,0" VerticalAlignment="Top"/>
 		<Button Style="{DynamicResource SimpleButton}" Content="Cancel" Background="#FF676767" Foreground="{DynamicResource FontColor}" HorizontalAlignment="Right" Margin="0,0,12,10" VerticalAlignment="Bottom" Width="72" Height="22" Click="CancelClicked"/>
 		<Button Style="{DynamicResource SimpleButton}" Content="Save" Background="#FF676767" Foreground="{DynamicResource FontColor}" Width="72" Height="22" HorizontalAlignment="Right" Margin="0,0,92,10" VerticalAlignment="Bottom" Click="SaveClick"/>
 		<Button Style="{DynamicResource SimpleButton}" Content="Reset settings" Background="#FF676767" Foreground="{DynamicResource FontColor}" Height="22" HorizontalAlignment="Left" Margin="8,0,0,10" VerticalAlignment="Bottom" Width="96" Click="ResetClicked"/>

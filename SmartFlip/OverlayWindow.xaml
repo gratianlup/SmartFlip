@@ -1,0 +1,245 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xml:lang="en-US"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2006" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:System="clr-namespace:System;assembly=mscorlib"
+	x:Class="SmartFlip.Window2"
+	x:Name="Window"
+	Title="Window"
+	Width="640" Height="480" Background="#00828282" AllowsTransparency="False" Focusable="True" ResizeMode="NoResize" ShowInTaskbar="False" SizeToContent="Manual" Topmost="False" WindowState="Maximized" IsHitTestVisible="True" SnapsToDevicePixels="False" WindowStyle="None" Loaded="WindowLoaded">
+
+	<Window.Resources>
+		<ControlTemplate TargetType="{x:Type Button}" x:Key="SmartFlipButton">
+			<ControlTemplate.Resources>
+				<Storyboard x:Key="onMouseEnter">
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.145"/>
+					</DoubleAnimationUsingKeyFrames>
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+					</DoubleAnimationUsingKeyFrames>
+				</Storyboard>
+				<Storyboard x:Key="onMouseLeave">
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.145"/>
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.005"/>
+					</DoubleAnimationUsingKeyFrames>
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.55"/>
+					</DoubleAnimationUsingKeyFrames>
+				</Storyboard>
+			</ControlTemplate.Resources>
+			<Grid Width="Auto" Height="Auto">
+				<Ellipse Fill="{TemplateBinding Background}" Margin="0,0,0,0"/>
+				<Ellipse Opacity="0" Fill="#FFFFFFFF" x:Name="ellipse"/>
+				<Grid Opacity="0.55" Margin="5,6,7.5,6" x:Name="grid">
+					<Path Fill="#FFFFFFFF" Stretch="Fill" Margin="-0.444,-0.307,-0.5,-0.554" Data="M13,0.19327421 L0.046466663,6.7520945 13,13.053419 z"/>
+				</Grid>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<EventTrigger RoutedEvent="Mouse.MouseLeave">
+					<BeginStoryboard x:Name="onMouseLeave_BeginStoryboard" Storyboard="{StaticResource onMouseLeave}"/>
+				</EventTrigger>
+				<EventTrigger RoutedEvent="Mouse.MouseEnter">
+					<BeginStoryboard Storyboard="{StaticResource onMouseEnter}"/>
+				</EventTrigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<ControlTemplate TargetType="{x:Type Button}" x:Key="SmartFlipButton3">
+			<ControlTemplate.Resources>
+				<Storyboard x:Key="onMouseEnter">
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.145"/>
+					</DoubleAnimationUsingKeyFrames>
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+					</DoubleAnimationUsingKeyFrames>
+				</Storyboard>
+				<Storyboard x:Key="onMouseLeave">
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.145"/>
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.005"/>
+					</DoubleAnimationUsingKeyFrames>
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.55"/>
+					</DoubleAnimationUsingKeyFrames>
+				</Storyboard>
+			</ControlTemplate.Resources>
+			<Grid Width="Auto" Height="Auto">
+				<Ellipse Fill="{TemplateBinding Background}" Margin="0,0,0,0"/>
+				<Ellipse Opacity="0" Fill="#FFFFFFFF" x:Name="ellipse"/>
+				<Grid Opacity="0.55" RenderTransformOrigin="0.5,0.5" Margin="3.5,3.055,3.5,5.39" x:Name="grid">
+					<Grid.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleX="-1" ScaleY="1"/>
+							<SkewTransform AngleX="0" AngleY="0"/>
+							<RotateTransform Angle="0"/>
+							<TranslateTransform X="0" Y="0"/>
+						</TransformGroup>
+					</Grid.RenderTransform>
+					<Path Fill="#FFFFFFFF" Stretch="Fill" Data="M13,0.19327421 L0.046466663,6.7520945 13,13.053419 z" RenderTransformOrigin="0.5,0.5" d:LayoutOverrides="Margin" Margin="4.667,2.641,-0.111,-0.001">
+						<Path.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="-1" ScaleY="1"/>
+								<SkewTransform AngleX="0" AngleY="0"/>
+								<RotateTransform Angle="0"/>
+								<TranslateTransform X="0" Y="0"/>
+							</TransformGroup>
+						</Path.RenderTransform>
+					</Path>
+					<Path Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FFFFFFFF" StrokeThickness="1.5" HorizontalAlignment="Left" Margin="1.28,2.171,0,1.884" Width="Auto" Data="M1,3.1666667 L1,9.0555556"/>
+					<Path RenderTransformOrigin="0.519,-0.74" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FFFFFFFF" StrokeThickness="1.5" Margin="1.28,0,4.498,2.611" VerticalAlignment="Bottom" Height="Auto" Data="M5.6111111,8.5 L0.94444444,8.5"/>
+				</Grid>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<EventTrigger RoutedEvent="Mouse.MouseLeave">
+					<BeginStoryboard x:Name="onMouseLeave_BeginStoryboard" Storyboard="{StaticResource onMouseLeave}"/>
+				</EventTrigger>
+				<EventTrigger RoutedEvent="Mouse.MouseEnter">
+					<BeginStoryboard Storyboard="{StaticResource onMouseEnter}"/>
+				</EventTrigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<ControlTemplate TargetType="{x:Type Button}" x:Key="SmartFlipButton2">
+			<ControlTemplate.Resources>
+				<Storyboard x:Key="onMouseEnter">
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.145"/>
+					</DoubleAnimationUsingKeyFrames>
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+					</DoubleAnimationUsingKeyFrames>
+				</Storyboard>
+				<Storyboard x:Key="onMouseLeave">
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.145"/>
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.005"/>
+					</DoubleAnimationUsingKeyFrames>
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.55"/>
+					</DoubleAnimationUsingKeyFrames>
+				</Storyboard>
+			</ControlTemplate.Resources>
+			<Grid Width="Auto" Height="Auto">
+				<Ellipse Fill="{TemplateBinding Background}" Margin="0,0,0,0"/>
+				<Ellipse Opacity="0" Fill="#FFFFFFFF" x:Name="ellipse"/>
+				<Grid Opacity="0.55" RenderTransformOrigin="0.5,0.5" Margin="5,4.9,5,5.1" x:Name="grid">
+					<Grid.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleX="-1" ScaleY="1"/>
+							<SkewTransform AngleX="0" AngleY="0"/>
+							<RotateTransform Angle="0"/>
+							<TranslateTransform X="0" Y="0"/>
+						</TransformGroup>
+					</Grid.RenderTransform>
+					<Path Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FFFFFFFF" StrokeThickness="1.65" Margin="-0.5,-0.451,-0.5,-0.5" Data="M0,0.049180328 L8,8"/>
+					<Path Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FFFFFFFF" StrokeThickness="1.65" Data="M0,0.049180328 L8,8" RenderTransformOrigin="0.5,0.5" Margin="-0.5,-0.451,-0.5,-0.5">
+						<Path.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="-1" ScaleY="1"/>
+								<SkewTransform AngleX="0" AngleY="0"/>
+								<RotateTransform Angle="0"/>
+								<TranslateTransform X="0" Y="0"/>
+							</TransformGroup>
+						</Path.RenderTransform>
+					</Path>
+				</Grid>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<EventTrigger RoutedEvent="Mouse.MouseLeave">
+					<BeginStoryboard x:Name="onMouseLeave_BeginStoryboard" Storyboard="{StaticResource onMouseLeave}"/>
+				</EventTrigger>
+				<EventTrigger RoutedEvent="Mouse.MouseEnter">
+					<BeginStoryboard Storyboard="{StaticResource onMouseEnter}"/>
+				</EventTrigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<ControlTemplate TargetType="{x:Type Button}" x:Key="SmartFlipButton_Back">
+			<ControlTemplate.Resources>
+				<Storyboard x:Key="onMouseEnter">
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.145"/>
+					</DoubleAnimationUsingKeyFrames>
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="1"/>
+					</DoubleAnimationUsingKeyFrames>
+				</Storyboard>
+				<Storyboard x:Key="onMouseLeave">
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.145"/>
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.005"/>
+					</DoubleAnimationUsingKeyFrames>
+					<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(UIElement.Opacity)">
+						<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+						<SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0.55"/>
+					</DoubleAnimationUsingKeyFrames>
+				</Storyboard>
+			</ControlTemplate.Resources>
+			<Grid Width="Auto" Height="Auto">
+				<Ellipse Fill="{TemplateBinding Background}" Margin="0,0,0,0"/>
+				<Ellipse Opacity="0" Fill="#FFFFFFFF" x:Name="ellipse"/>
+				<Grid Opacity="0.55" RenderTransformOrigin="0.5,0.5" Margin="7.2,6,5.3,6" x:Name="grid">
+					<Grid.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleX="-1" ScaleY="1"/>
+							<SkewTransform AngleX="0" AngleY="0"/>
+							<RotateTransform Angle="0"/>
+							<TranslateTransform X="0" Y="0"/>
+						</TransformGroup>
+					</Grid.RenderTransform>
+					<Path Fill="#FFFFFFFF" Stretch="Fill" Margin="-0.444,-0.307,-0.5,-0.554" Data="M13,0.19327421 L0.046466663,6.7520945 13,13.053419 z"/>
+				</Grid>
+			</Grid>
+			<ControlTemplate.Triggers>
+				<EventTrigger RoutedEvent="Mouse.MouseLeave">
+					<BeginStoryboard x:Name="onMouseLeave_BeginStoryboard" Storyboard="{StaticResource onMouseLeave}"/>
+				</EventTrigger>
+				<EventTrigger RoutedEvent="Mouse.MouseEnter">
+					<BeginStoryboard Storyboard="{StaticResource onMouseEnter}"/>
+				</EventTrigger>
+			</ControlTemplate.Triggers>
+		</ControlTemplate>
+		<Style TargetType="{x:Type Label}" x:Key="wTitle">			
+			<Setter Property="Foreground"
+				Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+			<Setter Property="Background"
+				Value="Transparent"/>
+			<Setter Property="Padding"
+				Value="5"/>
+			<Setter Property="HorizontalContentAlignment"
+				Value="Left"/>
+			<Setter Property="VerticalContentAlignment"
+				Value="Top"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Label}">
+						<Grid Opacity="1" RenderTransformOrigin="0.5,0.5" x:Name="grid1" Width="Auto" Height="Auto">
+							<Rectangle Fill="#99000000" RadiusX="18" RadiusY="18"/>
+							<TextBlock Grid.Column="0" FontSize="{DynamicResource fontSize}" Foreground="#000000" Text="{TemplateBinding Content}" TextWrapping="WrapWithOverflow" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" Width="Auto" Height="Auto" d:LayoutOverrides="Width, Height" HorizontalAlignment="Center" Margin="9,4,9,4" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" IsEnabled="True" IsHitTestVisible="False">
+								<TextBlock.BitmapEffect>
+									<BitmapEffectGroup>
+										<OuterGlowBitmapEffect GlowColor="#FFFFFFFF" GlowSize="{DynamicResource glowSize}"/>
+										<OuterGlowBitmapEffect GlowColor="{DynamicResource glowColor}" GlowSize="{DynamicResource glowSize2}"/>
+									</BitmapEffectGroup>
+								</TextBlock.BitmapEffect>
+							</TextBlock>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsEnabled"
+								Value="false">
+								<Setter Property="Foreground"
+									Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		
+	</Window.Resources>
+
+	<Canvas x:Name="LayoutRoot"/>
+</Window>

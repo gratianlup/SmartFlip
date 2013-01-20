@@ -8,5 +8,5 @@ It is written in C# and uses WPF and the Thumbnail API. The code is not very cle
 The application won in 2007 second place at "Hardware and Software Engineering" competition
 held by "Lucian Blaga" University, Sibiu, Romania.  
 
-[Download SmartFlip from Softpedia](http://www.softpedia.com/get/System/OS-Enhancements/SmartFlip.shtml)  
-[View SmartFlip demonstration video](http://youtu.be/bYX6YboNA4c) (100k+ views, it was quite popular among Windows enthusiasts)
+[View SmartFlip demonstration video](http://youtu.be/bYX6YboNA4c)  
+[Download SmartFlip from Softpedia](http://www.softpedia.com/get/System/OS-Enhancements/SmartFlip.shtml)

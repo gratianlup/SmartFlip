@@ -10,7 +10,7 @@ held by "Lucian Blaga" University, Sibiu, Romania.
 
 
 [View SmartFlip demonstration video](http://youtu.be/bYX6YboNA4c)  
-
 [Download SmartFlip from Softpedia](http://www.softpedia.com/get/System/OS-Enhancements/SmartFlip.shtml)
 
+![SmartFlip screenshot](http://www.gratianlup.com/documents/smart_flip.png)
 ![Options dialog screenshot](http://www.gratianlup.com/documents/smart_flip_options.PNG)

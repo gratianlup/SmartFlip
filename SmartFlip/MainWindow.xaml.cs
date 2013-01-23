@@ -3,12 +3,20 @@
 // modification, are permitted provided that the following conditions are
 // met:
 //
-//     * Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above
-//       copyright notice, this list of conditions and the following
-//       disclaimer in the documentation and/or other materials provided
-//       with the distribution.
+// * Redistributions of source code must retain the above copyright
+// notice, this list of conditions and the following disclaimer.
+//
+// * Redistributions in binary form must reproduce the above
+// copyright notice, this list of conditions and the following
+// disclaimer in the documentation and/or other materials provided
+// with the distribution.
+//
+// * The name "SmartFlip" must not be used to endorse or promote
+// products derived from this software without prior written permission.
+//
+// * Products derived from this software may not be called "SmartFlip" nor
+// may "SmartFlip" appear in their names without prior written
+// permission of the author.
 //
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -183,9 +191,6 @@ namespace SmartFlip {
                 }
                 else if(e.KeyCode == System.Windows.Forms.Keys.Tab && wm.options.useWinTab) {
                     bool shift = (UserActivityHook.GetKeyState(0x10) & 0x80) == 0x80;
-
-                    //wm.onTabKeyDown(shift);
-
                     e.Handled = true;
                     return;
                 }
@@ -212,7 +217,6 @@ namespace SmartFlip {
                             winct = 1;
                             showSmartFlip();
                             firtstab = true;
-
                             e.Handled = true;
                             return;
                         }
@@ -238,7 +242,6 @@ namespace SmartFlip {
                     }
 
                     showSmartFlip();
-
                     e.Handled = true;
                     return;
                 }
@@ -267,7 +270,6 @@ namespace SmartFlip {
                     WindowManager.GetWindowThreadProcessId(aw, out wm.filterKey);
 
                     showSmartFlip();
-
                     e.Handled = true;
                     return;
                 }
@@ -325,7 +327,6 @@ namespace SmartFlip {
         private void OnWindowClose(object sender, EventArgs e) {
             if(wm.options.showWindowTitle) {
                 wm.overlayWindow.Hide();
-
                 wm.overlayWindow.LayoutRoot.Children.Clear();
                 wm.overlayWindow.titles = null;
                 wm.unregisterWindowTitles();
@@ -334,21 +335,14 @@ namespace SmartFlip {
             wm.destroyWindows();
             wm.alreadyFiltered = false;
             wm.filterKey = 0;
-
-            //SmartFlip.Properties.Settings.Default.Save();
-
-            //this.WindowState = WindowState.Normal;
-
             keyPressed = false;
             running = false;
-
             this.Hide();
         }
 
         private void exitSmartFlip() {
             // hide tray icon
             icon.Visible = false;
-
             closeAllowed = true;
             wm.overlayWindow.closeAllowed = true;
             uah.Stop();
@@ -398,7 +392,6 @@ namespace SmartFlip {
                 window.animation.startWidth = 250;
                 window.animation.setEndSize(510, 510);
                 window.animation.startAnimation();
-
                 ft = false;
             }
             else {
@@ -426,8 +419,6 @@ namespace SmartFlip {
 
         public MainWindow() {
             InitializeComponent();
-
-
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e) {
@@ -458,22 +449,18 @@ namespace SmartFlip {
 
             // create and display NotifyIcon
             menu = new System.Windows.Forms.ContextMenu();
-
             menu.MenuItems.Add(new System.Windows.Forms.MenuItem("Options", Settings_Click));
             menu.MenuItems.Add(new System.Windows.Forms.MenuItem("About", About_Click));
             menu.MenuItems.Add(new System.Windows.Forms.MenuItem("-"));
             menu.MenuItems.Add(new System.Windows.Forms.MenuItem("Exit", Exit_Click));
 
             icon = new System.Windows.Forms.NotifyIcon();
-
             icon.ContextMenu = menu;
             icon.Text = "SmartFlip (beta1)";
             icon.Visible = true;
 
             // load icon from resource
             icon.Icon = (System.Drawing.Icon)SmartFlip.Properties.Resources.SmartFlip_Icon;
-
-            // handle double-click on the icon
             icon.DoubleClick += Icon_DblClick;
 
             // perform other initializations
@@ -484,10 +471,8 @@ namespace SmartFlip {
             Window3 settingsWindow = new Window3();
 
             Debug.WriteLine("At moment   " + DateTime.Now.ToLongTimeString() + "  " + DateTime.Now.Millisecond.ToString());
-
             settingsWindow.selectedPanel = 0;
             settingsWindow.ShowDialog();
-
             Debug.WriteLine("At moment   " + DateTime.Now.ToLongTimeString() + "  " + DateTime.Now.Millisecond.ToString());
 
             convertSettingsToSmartFlipOptions(SmartFlip.Properties.Settings.Default, ref wm.options);
@@ -495,10 +480,8 @@ namespace SmartFlip {
 
         private void About_Click(object Sender, EventArgs e) {
             Window3 settingsWindow = new Window3();
-
             settingsWindow.selectedPanel = 3;
             settingsWindow.ShowDialog();
-
             convertSettingsToSmartFlipOptions(SmartFlip.Properties.Settings.Default, ref wm.options);
         }
 
@@ -508,7 +491,6 @@ namespace SmartFlip {
 
         private void Icon_DblClick(object Sender, EventArgs e) {
             Window3 settingsWindow = new Window3();
-
             settingsWindow.selectedPanel = 0;
             settingsWindow.ShowDialog();
 
@@ -531,7 +513,6 @@ namespace SmartFlip {
             wm.destinationHandle = hwnd;
             wm.destinationDpi = 96.0;
             wm.grid = grid1;
-
             wm.overlayWindow = new Window2();
 
             // create windows and hide them
@@ -539,12 +520,9 @@ namespace SmartFlip {
             wm.overlayWindow.Left = wm.overlayWindow.Top = -32000;
             this.Hide();
             buttonPanel.Visibility = Visibility.Hidden;
-
+            
             wm.windowClose += OnWindowClose;
-
-            // add keyboard and mouse handlers for both windows
             this.Closing += new CancelEventHandler(onWindow1Closing);
-
             Mouse.AddMouseMoveHandler(this, MouseMoveHandler);
             Mouse.AddMouseUpHandler(this, MouseButtonUpHandler);
             Mouse.AddMouseWheelHandler(this, MouseWheelHandler);
@@ -617,7 +595,6 @@ namespace SmartFlip {
 
                 wm.overlayWindow.setTitleOptions(wm.options.titleGlowColor, wm.options.titleGlowSize, wm.options.windowTitleFontSize);
                 wm.overlayWindow.createWTitles(wm.windowNumber);
-
                 wm.overlayWindow.Topmost = true;
                 wm.overlayWindow.WindowState = WindowState.Maximized;
 
@@ -665,9 +642,7 @@ namespace SmartFlip {
         bool checkVista() {
             OSVERSIONINFO osvi = new OSVERSIONINFO();
             osvi.dwOSVersionInfoSize = Marshal.SizeOf(osvi);
-
             GetVersionEx(ref osvi);
-
             return osvi.dwMajorVersion >= 6;
         }
 
@@ -713,7 +688,6 @@ namespace SmartFlip {
             margins.cxRightWidth = Convert.ToInt32(-1 * (DesktopDpiX / 96));
             margins.cyTopHeight = Convert.ToInt32(-1 * (DesktopDpiX / 96));
             margins.cyBottomHeight = Convert.ToInt32(this.ActualHeight * (DesktopDpiX / 96));
-
             int hr = DwmExtendFrameIntoClientArea(mainWindowSrc.Handle, ref margins);
         }
     }
